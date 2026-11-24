@@ -27,6 +27,11 @@ jobs:
         with:
           gradle-version: "8.9"
 
+      - name: Align Java and Kotlin JVM targets
+        working-directory: JARVIS_AI_Android_v1
+        run: |
+          sed -i 's/JavaVersion.VERSION_1_8/JavaVersion.VERSION_17/g' app/build.gradle.kts
+
       - name: Build APK
         working-directory: JARVIS_AI_Android_v1
         run: gradle :app:assembleDebug
